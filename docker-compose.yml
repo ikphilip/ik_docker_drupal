@@ -1,0 +1,13 @@
+version: '3'
+services:
+  php-apache:
+    build:
+      context: ./docker/php-apache
+      args:
+        url: drupal8.local
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./:/var/www/drupal
+
