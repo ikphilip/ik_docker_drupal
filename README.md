@@ -8,13 +8,17 @@ Unpack these files in the root directory of the Drupal 8 file system.
 ## Configure
 In `docker-compose.yml` set your desired URL for the local instance in the build:args:url setting. You may also change the ports. The port configuration is set like `host-machine`:`docker-machine`.
 
-You must also edit your Drupal `.env` file and modify your database connection. Since the docker machine must connect back to the host MySQL instance you will need it to connect to `host.docker.internal`. I've also set this in my /etc/hosts file so that I can run drush commands from my local machine terminal.
+You must also edit your Drupal `.env` file and modify your database connection. Since the docker machine must connect back to the host MySQL instance you will need it to connect to `host.docker.internal`.
 ## Start Docker
 In the Drupal root directory run `docker-compose up`. Docker will begin downloading and building the container from scratch. This will be the longest the container takes to initalize. If you do not change the Docker settings in the future the files will be cached and take only seconds to build the container the next time.
 
 To stop the container run `docker-compose down`.
 
 If you make further changes any of the Docker configuration files then simply run `docker-compose build` to update your container cache.
+## TODOS
+1. Easily support drush and drupal console commands either from the host machine or the container.
+1. Make the database available from a container.
+1. Consider using PHP-FPM.
 ## Further Reading
 - [Docker Compose](https://docs.docker.com/compose/compose-file)
 - [Dockerfile](https://docs.docker.com/engine/reference/builder/)
