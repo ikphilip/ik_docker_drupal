@@ -86,3 +86,6 @@ RUN a2ensite 001-drupal.conf
 RUN a2enmod ssl
 RUN a2ensite drupal-ssl.conf
 RUN service apache2 restart
+
+#Change to Drupal directory
+WORKDIR /var/www/drupal
