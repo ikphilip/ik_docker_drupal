@@ -15,8 +15,16 @@ In the Drupal root directory run `docker-compose up`. Docker will begin download
 To stop the container run `docker-compose down`.
 
 If you make further changes any of the Docker configuration files then simply run `docker-compose build` to update your container cache.
+## Use Drupal
+Connect to your site at `https://localhost` or another alias defined in your hosts file. SSL is enabled by default and you may need to authorize the self-signed certificate in your browser. If you navigate to the non-SSL HTTP site you will see __Docker Localhost__ static HTML page. I've added `http://localhost/phpinfo.php`  to display the Docker PHP version and current configuration.
+## Using Drush and command-line utilities
+Because this current implementation syncs the local and docker file system and uses the local database we can configure a cli like drush to run locally.
+
+Edit the /etc/hosts files. Add `127.0.0.1 host.docker.internal` so that requests to that URL will loopback to your local machine.
+
+Now you may run `drush` from your local filesystem. It will read the database URL in settings.local.php and the system hosts file will route it directly to the current database.
 ## TODOS
-1. Easily support drush and drupal console commands either from the host machine or the container.
+1. Easily support drush and drupal console commands from ~~the host machine~~ or the container.
 1. Make the database available from a container.
 1. Consider using PHP-FPM.
 ## Further Reading
